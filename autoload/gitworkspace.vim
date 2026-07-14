@@ -13,7 +13,7 @@ function! gitworkspace#Collect() abort
     endif
   endfor
 
-  let l:output = system('gita shell git status --porcelain 2>/dev/null')
+  let l:output = system('gita shell git -c core.quotepath=false status --porcelain 2>/dev/null')
   let l:repos = {}
   for l:line in split(l:output, "\n")
     let l:line = substitute(l:line, '^\s\+', '', '')
